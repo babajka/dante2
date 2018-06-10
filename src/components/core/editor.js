@@ -49,7 +49,7 @@ class DanteEditor extends React.Component {
     this.forceRender = this.forceRender.bind(this)
     this.onChange = this.onChange.bind(this)
     this.dispatchChangesToSave = this.dispatchChangesToSave.bind(this)
-    this.setPreContent = this.setPreContent.bind(this)
+    // this.setPreContent = this.setPreContent.bind(this)
     this.focus = this.focus.bind(this)
     this.getEditorState = this.getEditorState.bind(this)
     this.emitSerializedOutput = this.emitSerializedOutput.bind(this)
@@ -146,16 +146,16 @@ class DanteEditor extends React.Component {
 
     this.character_convert_mapping = this.props.config.character_convert_mapping
 
-    this.save = new SaveBehavior({
-      getLocks: this.getLocks,
-      config: {
-        xhr: this.props.config.xhr,
-        data_storage: this.props.config.data_storage
-      },
-      editor: this,
-      editorState: this.getEditorState,
-      editorContent: this.emitSerializedOutput()
-    })
+    // this.save = new SaveBehavior({
+    //   getLocks: this.getLocks,
+    //   config: {
+    //     xhr: this.props.config.xhr,
+    //     data_storage: this.props.config.data_storage
+    //   },
+    //   editor: this,
+    //   editorState: this.getEditorState,
+    //   editorContent: this.emitSerializedOutput()
+    // })
 
     const { styles, customStyleFn, exporter } = createStyles(['font-size', 'color', 'font-family']);  //, 'PREFIX', customStyleMap);
     this.styles = styles
@@ -220,7 +220,7 @@ class DanteEditor extends React.Component {
 
     editorState = this.handleUndeletables(editorState)
 
-    this.setPreContent()
+    // this.setPreContent()
     this.setState({ editorState })
 
     const currentBlock = getCurrentBlock(this.state.editorState)
@@ -277,14 +277,15 @@ class DanteEditor extends React.Component {
   dispatchChangesToSave() {
     clearTimeout(this.saveTimeout)
     return this.saveTimeout = setTimeout(() => {
-      return this.save.store(this.emitSerializedOutput())
+      // return this.save.store(this.emitSerializedOutput())
+      this.props.onChange(this.emitSerializedOutput())
     }, 100)
   }
 
-  setPreContent() {
-    const content = this.emitSerializedOutput()
-    return this.save.editorContent = content
-  }
+  // setPreContent() {
+  //   const content = this.emitSerializedOutput()
+  //   return this.save.editorContent = content
+  // }
 
   focus() {
     //debugger
@@ -447,7 +448,7 @@ class DanteEditor extends React.Component {
     
     return setTimeout(() => {
       const items = this.tooltipsWithProp(prop)
-      console.log(items)
+      // console.log(items)
       return items.map(o => {
         this.refs[o.ref].display(display)
         return this.refs[o.ref].relocate()
@@ -825,14 +826,14 @@ class DanteEditor extends React.Component {
   }
 
   disableEditable() {
-    console.log("in !!")
+    // console.log("in !!")
     this.closePopOvers()
     return this.setState({ read_only: true }, this.testEmitAndDecode)
   }
 
   enableEditable() {
     this.closePopOvers()
-    console.log("out !!")
+    // console.log("out !!")
     return this.setState({ read_only: false }, this.testEmitAndDecode)
   }
 

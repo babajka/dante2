@@ -38,7 +38,7 @@ var _reactDom = __webpack_require__(9);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _immutable = __webpack_require__(47);
+var _immutable = __webpack_require__(48);
 
 var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -87,7 +87,7 @@ var DanteEditor = function (_React$Component) {
     _this.forceRender = _this.forceRender.bind(_this);
     _this.onChange = _this.onChange.bind(_this);
     _this.dispatchChangesToSave = _this.dispatchChangesToSave.bind(_this);
-    _this.setPreContent = _this.setPreContent.bind(_this);
+    // this.setPreContent = this.setPreContent.bind(this)
     _this.focus = _this.focus.bind(_this);
     _this.getEditorState = _this.getEditorState.bind(_this);
     _this.emitSerializedOutput = _this.emitSerializedOutput.bind(_this);
@@ -184,16 +184,16 @@ var DanteEditor = function (_React$Component) {
 
     _this.character_convert_mapping = _this.props.config.character_convert_mapping;
 
-    _this.save = new _save_content2['default']({
-      getLocks: _this.getLocks,
-      config: {
-        xhr: _this.props.config.xhr,
-        data_storage: _this.props.config.data_storage
-      },
-      editor: _this,
-      editorState: _this.getEditorState,
-      editorContent: _this.emitSerializedOutput()
-    });
+    // this.save = new SaveBehavior({
+    //   getLocks: this.getLocks,
+    //   config: {
+    //     xhr: this.props.config.xhr,
+    //     data_storage: this.props.config.data_storage
+    //   },
+    //   editor: this,
+    //   editorState: this.getEditorState,
+    //   editorContent: this.emitSerializedOutput()
+    // })
 
     var _createStyles = (0, _draftJsCustomStyles2['default'])(['font-size', 'color', 'font-family']),
         styles = _createStyles.styles,
@@ -274,7 +274,7 @@ var DanteEditor = function (_React$Component) {
 
       editorState = this.handleUndeletables(editorState);
 
-      this.setPreContent();
+      // this.setPreContent()
       this.setState({ editorState: editorState });
 
       var currentBlock = (0, _index.getCurrentBlock)(this.state.editorState);
@@ -335,15 +335,16 @@ var DanteEditor = function (_React$Component) {
 
       clearTimeout(this.saveTimeout);
       return this.saveTimeout = setTimeout(function () {
-        return _this4.save.store(_this4.emitSerializedOutput());
+        // return this.save.store(this.emitSerializedOutput())
+        _this4.props.onChange(_this4.emitSerializedOutput());
       }, 100);
     }
-  }, {
-    key: 'setPreContent',
-    value: function setPreContent() {
-      var content = this.emitSerializedOutput();
-      return this.save.editorContent = content;
-    }
+
+    // setPreContent() {
+    //   const content = this.emitSerializedOutput()
+    //   return this.save.editorContent = content
+    // }
+
   }, {
     key: 'focus',
     value: function focus() {}
@@ -532,7 +533,7 @@ var DanteEditor = function (_React$Component) {
 
       return setTimeout(function () {
         var items = _this5.tooltipsWithProp(prop);
-        console.log(items);
+        // console.log(items)
         return items.map(function (o) {
           _this5.refs[o.ref].display(display);
           return _this5.refs[o.ref].relocate();
@@ -953,7 +954,7 @@ var DanteEditor = function (_React$Component) {
   }, {
     key: 'disableEditable',
     value: function disableEditable() {
-      console.log("in !!");
+      // console.log("in !!")
       this.closePopOvers();
       return this.setState({ read_only: true }, this.testEmitAndDecode);
     }
@@ -961,7 +962,7 @@ var DanteEditor = function (_React$Component) {
     key: 'enableEditable',
     value: function enableEditable() {
       this.closePopOvers();
-      console.log("out !!");
+      // console.log("out !!")
       return this.setState({ read_only: false }, this.testEmitAndDecode);
     }
   }, {
@@ -1172,8 +1173,10 @@ exports.DanteEditor = exports.Dante = undefined;
 
 var _init = __webpack_require__(222);
 
-window.Dante = _init.Dante;
-window.DanteEditor = _init.DanteEditor;
+if (window) {
+  window.Dante = _init.Dante;
+  window.DanteEditor = _init.DanteEditor;
+}
 
 exports.Dante = _init.Dante;
 exports.DanteEditor = _init.DanteEditor;
@@ -1407,7 +1410,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _assign = __webpack_require__(82);
+var _assign = __webpack_require__(83);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -1899,7 +1902,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _assign = __webpack_require__(82);
+var _assign = __webpack_require__(83);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -2021,7 +2024,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _assign = __webpack_require__(82);
+var _assign = __webpack_require__(83);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -2188,7 +2191,7 @@ var _reactDom = __webpack_require__(9);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _immutable = __webpack_require__(47);
+var _immutable = __webpack_require__(48);
 
 var _editor = __webpack_require__(118);
 
@@ -2237,13 +2240,13 @@ var Dante = function () {
     if (options == null) {
       options = {};
     }
-    console.log("init editor Dante!");
+    // console.log("init editor Dante!")
 
     // deep merge on config
     var config = (0, _immutable.Map)((0, _immutable.fromJS)(this.defaultOptions(options)));
 
     this.options = config.mergeDeep(options).toJS();
-    console.log(this.options);
+    // console.log(this.options)
   }
 
   (0, _createClass3['default'])(Dante, [{
@@ -2476,7 +2479,7 @@ var Dante = function () {
   }, {
     key: 'render',
     value: function render() {
-      return this.editor = _reactDom2['default'].render(_react2['default'].createElement(_editor2['default'], { content: this.getContent(), config: this.options }), document.getElementById(this.options.el));
+      return this.editor = _reactDom2['default'].render(_react2['default'].createElement(_editor2['default'], { content: this.getContent(), config: this.options, onChange: console.log }), document.getElementById(this.options.el));
     }
   }]);
   return Dante;
@@ -2496,7 +2499,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(81);
+var _stringify = __webpack_require__(82);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -4215,13 +4218,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(81);
+var _stringify = __webpack_require__(82);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
 var _draftJs = __webpack_require__(12);
 
-var _immutable = __webpack_require__(47);
+var _immutable = __webpack_require__(48);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -4362,7 +4365,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(81);
+var _stringify = __webpack_require__(82);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -4378,7 +4381,7 @@ var _axios = __webpack_require__(59);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _immutable = __webpack_require__(47);
+var _immutable = __webpack_require__(48);
 
 var _immutable2 = _interopRequireDefault(_immutable);
 
@@ -4553,7 +4556,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.addNewBlockAt = exports.updateTextOfBlock = exports.updateDataOfBlock = exports.resetBlockWithType = exports.addNewBlock = exports.getCurrentBlock = exports.getNode = exports.getDefaultBlockData = undefined;
 
-var _immutable = __webpack_require__(47);
+var _immutable = __webpack_require__(48);
 
 var _draftJs = __webpack_require__(12);
 
@@ -4744,42 +4747,42 @@ var addNewBlockAt = exports.addNewBlockAt = function addNewBlockAt(editorState, 
 
 /***/ }),
 
-/***/ 434:
+/***/ 433:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/dante.svg";
 
 /***/ }),
 
-/***/ 435:
+/***/ 434:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/dante.ttf";
 
 /***/ }),
 
-/***/ 436:
+/***/ 435:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/dante.woff";
 
 /***/ }),
 
-/***/ 437:
+/***/ 436:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/fontello.svg";
 
 /***/ }),
 
-/***/ 438:
+/***/ 437:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/fontello.ttf";
 
 /***/ }),
 
-/***/ 439:
+/***/ 438:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "fonts/fontello.woff";

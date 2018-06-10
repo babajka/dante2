@@ -22,13 +22,13 @@ class Dante {
     if (options == null) {
       options = {}
     }
-    console.log("init editor Dante!")
+    // console.log("init editor Dante!")
 
     // deep merge on config
     let config = Map(fromJS(this.defaultOptions(options)))
 
     this.options = config.mergeDeep(options).toJS()
-    console.log(this.options)
+    // console.log(this.options)
   }
 
   defaultOptions(options) {
@@ -291,7 +291,7 @@ class Dante {
 
   render() {
     return this.editor = ReactDOM.render(
-      <DanteEditor content={this.getContent()} config={this.options} />,
+      <DanteEditor content={this.getContent()} config={this.options} onChange={console.log}/>,
       document.getElementById(this.options.el)
     )
   }
