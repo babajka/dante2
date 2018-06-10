@@ -20,10 +20,10 @@ function forkAndBuildDocs({verbose}) {
 export default function Build(options) {
   return Promise.all([
     lib(),
-    es(),
-    bower(),
-    dist(),
-    docs()
+    // es(),
+    // bower(),
+    // dist(),
+    // docs()
     //,forkAndBuildDocs(options)
   ])
   .then(() => copy(distRoot, bowerRoot));
