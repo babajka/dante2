@@ -1,18 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import { 
-  Entity, 
-  RichUtils, 
-  AtomicBlockUtils, 
-  EditorState 
+import {
+  Entity,
+  RichUtils,
+  AtomicBlockUtils,
+  EditorState
   } from 'draft-js'
 
-import { 
-  addNewBlock, 
-  resetBlockWithType, 
-  updateDataOfBlock, 
-  getCurrentBlock, 
+import {
+  addNewBlock,
+  resetBlockWithType,
+  updateDataOfBlock,
+  getCurrentBlock,
   getNode } from '../../model/index.js'
 
 import { getSelectionRect, getSelection, getRelativeParent } from "../../utils/selection.js"
@@ -85,6 +85,7 @@ class DanteInlineTooltip extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    console.log(newProps);
     return this.collapse()
   }
 
@@ -301,4 +302,3 @@ class InlineTooltipItem extends React.Component {
 }
 
 export default DanteInlineTooltip
-
