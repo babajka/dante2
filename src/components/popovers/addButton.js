@@ -85,8 +85,7 @@ class DanteInlineTooltip extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps);
-    return this.collapse()
+    // return this.collapse() TODO: fix me
   }
 
   activeClass() {

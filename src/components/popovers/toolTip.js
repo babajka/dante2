@@ -1,17 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import { 
-  convertToRaw, 
-  CompositeDecorator, 
-  getVisibleSelectionRect, 
-  getDefaultKeyBinding, 
-  getSelectionOffsetKeyForNode, 
-  KeyBindingUtil, 
-  ContentState, 
-  Editor, 
-  EditorState, 
-  Entity, 
+import {
+  convertToRaw,
+  CompositeDecorator,
+  getVisibleSelectionRect,
+  getDefaultKeyBinding,
+  getSelectionOffsetKeyForNode,
+  KeyBindingUtil,
+  ContentState,
+  Editor,
+  EditorState,
+  Entity,
   RichUtils } from 'draft-js'
 
 import { getSelectionRect, getSelection, getRelativeParent } from "../../utils/selection.js"
@@ -139,9 +139,9 @@ class DanteTooltip extends React.Component {
       return
 
 
-    let diff = window.pageYOffset + parent.getBoundingClientRect().top
-    let top = (selectionRect.top - relativeRect.top) - toolbarHeight + diff
-    let left = selectionBoundary.left + selectionBoundary.width / 2 - padd
+    // let diff = window.pageYOffset + parent.getBoundingClientRect().top
+    let top = (selectionRect.top - relativeRect.top) - toolbarHeight // + diff
+    let left = selectionBoundary.left + selectionBoundary.width / 2 - padd - relativeRect.left
 
     //let left = (selectionRect.left - relativeRect.left) + (selectionRect.width / 2)
 
@@ -221,7 +221,7 @@ class DanteTooltip extends React.Component {
       showPopLinkOver: this.props.showPopLinkOver,
       hidePopLinkOver: this.props.hidePopLinkOver
     }
-    
+
     let entityKey = Entity.create('LINK', 'MUTABLE', opts)
     //contentState.createEntity('LINK', 'MUTABLE', opts)
 
@@ -256,7 +256,7 @@ class DanteTooltip extends React.Component {
     if (this.refs.dante_menu_input) {
       this.refs.dante_menu_input.value = ""
     }
-    
+
     let currentBlock = getCurrentBlock(this.props.editorState)
     let blockType = currentBlock.getType()
     let selection = this.props.editor.state.editorState.getSelection()
@@ -423,4 +423,3 @@ class DanteTooltipLink extends React.Component {
 
 
 export default DanteTooltip
-

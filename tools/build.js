@@ -22,7 +22,7 @@ export default function Build(options) {
     lib(),
     // es(),
     // bower(),
-    // dist(),
+    dist(),
     // docs()
     //,forkAndBuildDocs(options)
   ])
