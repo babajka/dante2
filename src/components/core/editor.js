@@ -922,7 +922,7 @@ class DanteEditor extends React.Component {
                   <div className="section-divider layoutSingleColumn">
                     <hr className="section-divider" />
                   </div>
-                  <div className="section-content container">
+                  <div className="section-content dante2-container">
                     <div ref="richEditor" 
                         className="section-inner layoutSingleColumn"
                         onClick={ this.focus }>
