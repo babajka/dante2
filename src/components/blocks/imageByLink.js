@@ -34,7 +34,7 @@ export default class extends Component {
     }
     const { provisory_text: url } = this.dataForUpdate();
     if (url) {
-      this.setState({ url, provisory_text: 'kek' }, this.updateData);
+      this.setState({ url, provisory_text: '' }, this.updateData);
     }
   }
 
@@ -43,7 +43,6 @@ export default class extends Component {
     const { getEditorState, setEditorState } = blockProps;
     const data = block.getData();
     const newData = data.merge(this.state);
-    console.log('newData', newData.toJS());
     return setEditorState(updateDataOfBlock(getEditorState(), block, newData));
   }
 

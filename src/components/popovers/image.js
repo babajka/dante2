@@ -102,7 +102,7 @@ class DanteImagePopover extends React.Component {
       if (blockType === "image") {
         let selectionBoundary = node.anchorNode.parentNode.parentNode
                                            .parentNode.getBoundingClientRect()
-        
+
         let coords = selectionBoundary
 
         let el = this.refs.image_popover
@@ -114,9 +114,9 @@ class DanteImagePopover extends React.Component {
         const toolbarHeight = el.offsetHeight;
 
         let left = selectionBoundary.left + selectionBoundary.width / 2 - padd
-        
+
         let diff = window.pageYOffset + parent.getBoundingClientRect().top
-      
+
         let top = selectionBoundary.top - parentBoundary.top + toolbarHeight //+ diff
 
         return this.setPosition({ top: top, left: left })
@@ -192,4 +192,3 @@ class DanteImagePopoverItem extends React.Component {
 }
 
 export default DanteImagePopover
-
